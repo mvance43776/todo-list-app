@@ -1,0 +1,13 @@
+Components: 
+-App
+  -Header
+  	-Nav menu
+  	-Date 
+  -All-tasks-container
+  	-Daily
+  		-Individual
+  	-Weekly
+  		-Individual
+  	-Monthly
+  		-Individual
+  -Footer
