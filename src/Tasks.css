@@ -1,0 +1,196 @@
+#slides {
+  height: 100%;
+  width: 100%;
+  background-color: olive;
+  flex: 1;
+}
+
+.slide {
+  flex: 1;
+	width: 100%;
+  height: 100%;
+	transition: transform 1s;
+	font-family: "Quicksand";
+	text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.slide1 {
+  display: none;
+}
+
+
+.content {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+   background: -webkit-linear-gradient(90deg,#292032 10%,#43233A 90%); background: linear-gradient(90deg,#292032 10%,#43233A 90%); 
+  width: 100%;
+  padding-bottom: 60px;
+  min-height: calc(90vh - 120px);
+}
+
+
+
+
+
+.content-time {
+  flex: 1;
+  background-color: rgba(100, 100, 100, 0);
+  border-right: 1px solid rgb(100,100,100);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  -webkit-transtion: opacity 0.5s;
+  transition: opacity 0.5s;
+  order: 1;
+}
+
+.strikethrough {
+  text-decoration: line-through;
+  opacity: 0.25;
+  transition: 0.5s;
+  display: flex;
+  order: 2;
+  justify-content: center;
+}
+
+
+
+.content-time p {
+  background-color: rgba(100,100,100,0.5);
+  text-align: center;
+  font-size: 24px;
+  padding: 20px;
+  margin: 2px;
+  width: 90%;
+  min-width: 350px;
+  color: rgb(200,200,200);
+  font-family: 'Quicksand', sans-serif;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 0;
+}
+
+.recentText {
+  flex: 40;
+  
+}
+
+.delete-button {
+  flex: 1;
+  background-color: rgba(200,0,0,0.25);
+  width: 20px;
+  cursor: pointer;
+  z-index: 25;
+  display: flex;
+  justify-content: center;
+  flex-shrink: 20;
+  color: rgb(200,200,200);
+}
+
+.delete-button:hover {
+ background-color: red;
+}
+
+.filler2 {
+  flex: 1;
+  flex-shrink: 20;
+}
+
+.content-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.content-header h1 {
+  flex: 1;
+  text-align: center;
+  font-size: 36px;
+  color: rgb(200, 200, 200);
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 100;
+  border-bottom: 1px solid currentColor;
+  margin: 10px;
+    order: 0;
+}
+
+.content-stats {
+  flex: 1;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 32px;
+  color: rgba(200,200,200,0.65);
+  order: -1;
+    align-self: center;
+    letter-spacing: 1px;
+
+}
+
+.filler {
+  flex: 1;
+  order: 1;
+}
+
+.add-button {
+  background-color: rgba(200,200,200,0.5);
+  border: none;
+  color: rgb(200,200,200);
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  order: 10;
+}
+
+.add-button:hover {
+  background-color: rgba(250,150,50, 0.55);
+}
+
+.remove-button {
+  background-color: rgba(200,200,200,0.5);
+  border: none;
+  color: rgb(200,200,200);
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  order: 10;
+}
+
+.remove-button:hover {
+  background-color: rgba(250,150,50, 0.55);
+}
+
+.input-text {
+  color: rgb(200,200,200);
+  text-align: center;
+  font-family: 'Quicksand', sans-serif;
+}
+
+#p-day0, #p-week0, #p-month0 {
+  display: none;
+}
+
+.clear-button {
+  background-color: rgba(200,0,0,1.0);
+  border: none;
+  color: rgb(200,200,200);
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.clear-button:hover {
+  background-color: rgba(250,150,50, 0.55);
+}
+
+.input-text {
+  width: 100%;
+  display: flex;
+  flex-wrap: no-wrap;
+}

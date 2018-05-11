@@ -1,10 +1,31 @@
 import React, { Component } from 'react';
 import './TasksContainer.css';
+import DayTasks from './DayTasks.js';
+import WeekTasks from './WeekTasks.js';
+import MonthTasks from './MonthTasks.js';
 
 class TasksContainer extends Component {
   constructor(props) {
   	super(props);
-
+    this.state = {
+      taskList: {
+        daily: [
+                "Take out trash", 
+                "Dishes", 
+                "Water flowers"
+               ],
+        weekly: [
+                 "Shave", 
+                 "Cut nails", 
+                 
+                ], 
+        monthly: [
+                  "Oil cutting board", 
+                  "Check finances", 
+                  "Hone knives"
+                 ],
+      }
+    }
   }
 
 
@@ -18,42 +39,9 @@ componentDidMount() {
       <div id="slides">
         <div className="slide slide0">
           <div className="content">
-            <div className="content-time" id="day">
-              <div className="content-header">
-                <div className = "filler">
-                </div>
-                <h1>Day</h1>
-                <div className="content-stats" id="stats-day">
-                  <h2>5/5</h2>
-                </div>
-              </div>
-              <p id = "p-day0"></p>
-              <input className="add-button" id = "add-day" type="button" value="add"></input>
-            </div>
-            <div className="content-time" id="week">
-              <div className="content-header">
-                <div className = "filler">
-                </div>
-                <h1>Week</h1>
-                <div className="content-stats" id="stats-week">
-                  <h2>5/5</h2>
-                </div>
-              </div>
-              <p id = "p-week0"></p>
-              <input className="add-button" id = "add-week" type="button" value="add"></input>
-            </div>
-            <div className="content-time" id="month">
-              <div className="content-header">
-                <div className = "filler">
-                </div>
-                <h1>Month</h1>
-                <div className="content-stats" id="stats-month">
-                  <h2>5/5</h2>
-                </div>
-              </div>
-              <p id = "p-month0"></p>
-              <input className="add-button" id = "add-month" type="button" value="add"></input>
-            </div>
+            <DayTasks tasks = {this.state.taskList.daily}/>
+            <WeekTasks tasks = {this.state.taskList.weekly}/>
+            <MonthTasks tasks = {this.state.taskList.monthly}/>
           </div>
         </div>
         <div className="slide slide1">
