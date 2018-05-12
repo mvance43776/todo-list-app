@@ -1,3 +1,135 @@
+* {
+        margin: 0;
+        padding-top: 0px;
+        border: 0;
+        outline: 0;
+        font-size: 100%;
+        vertical-align: baseline;
+        background: transparent;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
+    }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.header {
+  width: 100%;
+  background-color: rgba(213, 213, 213, 1.0);
+  height: 100px;
+  display: flex;
+padding: 10px 0px;
+  justify-content: space-between;
+}
+
+.date-all {
+  display: flex;
+}
+
+.circle-num {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 30px;
+}
+
+.circle {
+ border: 4px solid;
+ height: 80px;
+ width: 80px;
+ -moz-border-radius:75px;
+ -webkit-border-radius: 75px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-color: rgba(94, 0, 36, 1.0);
+}
+
+.circle p {
+  font-size: 42px;
+  font-weight: 700;
+  color: rgba(94, 0, 36, 1.0);
+  font-family: 'Quicksand', sans-serif;
+  
+}
+
+.date {
+  height: 100%;
+  line-height: 115px;
+  font-size: 42px;
+  letter-spacing: 3px;
+  margin: 5px;
+  margin-left: 20px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 100;
+}
+
+.date-info {
+  color: #4233A;
+}
+
+.nav {
+  height: 100%;
+  width: 20%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.nav li {
+  list-style-type: none;
+  display: inline-block;
+  font-family: 'Quicksand', sans-serif;
+  text-transform: lowercase;
+  font-size: 20px;
+  font-weight: 100;
+  letter-spacing: 1px;
+  margin: 4px 10px;
+}
+
+
+.nav li a {
+  text-decoration: none;
+  color: #4233A;
+}
+
+.nav li a:hover {
+  color: grey;
+    border-bottom: 1px solid currentColor;
+}
+
+.nav .active{
+    border-bottom: 1px solid currentColor;
+}
+
+.alternate {
+     background: -webkit-linear-gradient(90deg,#292032 10%,#43233A 90%); background: linear-gradient(90deg,#292032 10%,#43233A 90%);
+       color: white;
+}
+
+.alternate-text {
+  color: rgb(200,200,200);
+}
+
+.alternate-circle {
+  border: 4px solid rgb(200,200,200);
+}
+
+.alternate-circle p {
+  color: rgb(200,200,200);
+}
+
 #slides {
   height: 100%;
   width: 100%;
@@ -196,5 +328,5 @@
 }
 
 .task {
-  background-color: navy;
+  background: blue;
 }
