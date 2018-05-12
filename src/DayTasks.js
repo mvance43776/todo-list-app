@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Tasks.css';
+import './Header.css';
 import Task from './task.js';
 
 class DayTasks extends Component {
@@ -9,6 +9,7 @@ class DayTasks extends Component {
     this.state = {
       taskComplete: [],
       taskSum: 0,
+      newTask: "",
     }
 
     this.componentDidMount = this.componentDidMount.bind(this);
@@ -49,7 +50,7 @@ toggleTask(index) {
             <h2>{this.state.taskSum}/{this.state.taskComplete.length}</h2>
           </div>
         </div>
-        <p id = "p-day0"></p>
+        <p id = 'p-day0'></p>
         {this.props.tasks.map((task, i) => {
           return (
           <Task 

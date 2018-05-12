@@ -326,3 +326,7 @@ padding: 10px 0px;
   display: flex;
   flex-wrap: no-wrap;
 }
+
+#newTask {
+  order: 3;
+}
