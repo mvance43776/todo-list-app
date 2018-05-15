@@ -26,11 +26,26 @@ class TasksContainer extends Component {
                  ],
       }
     }
+    this.handleAddClick = this.handleAddClick.bind(this);
+    this.deleteTask = this.deleteTask.bind(this);
   }
 
 
 componentDidMount() {
 
+}
+
+handleAddClick() {
+  console.log('reached')
+  let taskList = this.state.taskList;
+  taskList.daily.push("")
+  this.setState({taskList: taskList});
+}
+
+deleteTask(index, time) {
+  let taskList = this.state.taskList;
+  taskList[time].splice(index, 1);
+  this.setState({taskList: taskList});
 }
 
 
@@ -39,9 +54,22 @@ componentDidMount() {
       <div id="slides">
         <div className="slide slide0">
           <div className="content">
-            <DayTasks tasks = {this.state.taskList.daily}/>
-            <WeekTasks tasks = {this.state.taskList.weekly}/>
-            <MonthTasks tasks = {this.state.taskList.monthly}/>
+            <DayTasks 
+              time = "Day"
+              tasks = {this.state.taskList.daily}
+              handleAddClickFunc = {this.handleAddClick}
+              deleteFunc = {this.deleteTask}
+            />
+            <DayTasks 
+              time = "Week"
+              tasks = {this.state.taskList.weekly}
+              deleteFunc = {this.deleteTask}
+            />
+            <DayTasks 
+              time = "Month"
+              tasks = {this.state.taskList.monthly}
+              deleteFunc = {this.deleteTask}
+            />
           </div>
         </div>
         <div className="slide slide1">

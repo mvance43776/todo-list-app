@@ -7,6 +7,7 @@ class Task extends Component {
 
 
     this.taskClicked = this.taskClicked.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
 
@@ -23,9 +24,13 @@ taskClicked() {
     console.log('Active: ' + this.props.active)
 }
 
+handleDelete() {
+  this.props.deleteFunc(this.props.index);
+}
 
   render() {
     return (
+      <div>
       <p
         onDoubleClick = {this.removal} 
         className = {this.props.active ? 'strikethrough' : ''}
@@ -35,6 +40,10 @@ taskClicked() {
       >
         {this.props.task}
       </p>
+      <div className = 'delete-button' onClick = {this.handleDelete}>
+      X
+      </div>
+      </div>
     );
   }
 }

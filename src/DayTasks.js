@@ -9,11 +9,14 @@ class DayTasks extends Component {
     this.state = {
       taskComplete: [],
       taskSum: 0,
-      newTask: "",
+      newTask: "Hit Enter",
     }
 
     this.componentDidMount = this.componentDidMount.bind(this);
     this.toggleTask = this.toggleTask.bind(this);
+    this.handleAddClick = this.handleAddClick.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.deleteTask = this.deleteTask.bind(this);
   }
 
 
@@ -39,13 +42,41 @@ toggleTask(index) {
   this.setState({taskComplete: taskComplete, taskSum: taskSum});
 }
 
+handleAddClick() {
+  console.log('add clicked')
+}
+
+handleChange(event) {
+  this.setState({newTask: event.target.value}, function() {
+    console.log(this.state.newTask)
+  })
+}
+
+deleteTask(index) {
+  if (this.props.time === 'Day'){
+    let time = 'daily'
+    this.props.deleteFunc(index, time);
+  } 
+
+  else if (this.props.time === 'Week'){
+    let time = 'weekly'
+    this.props.deleteFunc(index, time);
+  }
+
+  else {
+    let time = 'monthly'
+    this.props.deleteFunc(index, time);    
+  }
+
+}
+
   render() {
     return (
-      <div className="content-time" id="day">
+      <div className="content-time" id={this.props.time}>
         <div className="content-header">
           <div className = "filler">
           </div>
-          <h1>Day</h1>
+          <h1>{this.props.time}</h1>
           <div className="content-stats" id="stats-day">
             <h2>{this.state.taskSum}/{this.state.taskComplete.length}</h2>
           </div>
@@ -58,10 +89,11 @@ toggleTask(index) {
             task = {task}
             active = {this.state.taskComplete[i]}
             toggleTaskFunc = {this.toggleTask}
+            deleteFunc = {this.deleteTask}
           />
           )
         })}
-        <input className="add-button" id = "add-day" type="button" value="add"></input>
+        <input className="add-button" id = "add-day" type="button" value="add" onClick = {this.handleAddClick}></input>
       </div>
     );
   }

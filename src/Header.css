@@ -213,14 +213,13 @@ padding: 10px 0px;
 }
 
 .delete-button {
-  flex: 1;
+  position: relative;
+  top: -80px;
+  left: 380px;
   background-color: rgba(200,0,0,0.25);
   width: 20px;
   cursor: pointer;
   z-index: 25;
-  display: flex;
-  justify-content: center;
-  flex-shrink: 20;
   color: rgb(200,200,200);
 }
 
