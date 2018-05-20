@@ -270,26 +270,28 @@ padding: 10px 0px;
   background-color: rgba(200,200,200,0.5);
   border: none;
   color: rgb(200,200,200);
-  padding: 16px 32px;
+  padding: 20px;
+  margin: 2px;
   text-decoration: none;
-  margin: 4px 2px;
   cursor: pointer;
   order: 10;
+  width: 75%;
 }
 
 .add-button:hover {
-  background-color: rgba(250,150,50, 0.55);
+  background-color: rgba(150,250,50, 0.55);
 }
 
 .remove-button {
   background-color: rgba(200,200,200,0.5);
   border: none;
   color: rgb(200,200,200);
-  padding: 16px 32px;
+  padding: 20px;
+  margin: 2px;
   text-decoration: none;
-  margin: 4px 2px;
   cursor: pointer;
   order: 10;
+  width: 75%;
 }
 
 .remove-button:hover {

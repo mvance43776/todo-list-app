@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './Header.css';
 import DayTasks from './DayTasks.js';
-import WeekTasks from './WeekTasks.js';
-import MonthTasks from './MonthTasks.js';
 
 class TasksContainer extends Component {
   constructor(props) {
@@ -24,10 +22,12 @@ class TasksContainer extends Component {
                   "Check finances", 
                   "Hone knives"
                  ],
-      }
+      }, 
+      deleteMode: false,
     }
     this.handleAddClick = this.handleAddClick.bind(this);
     this.deleteTask = this.deleteTask.bind(this);
+    this.toggleDeleteMode = this.toggleDeleteMode.bind(this);
   }
 
 
@@ -48,6 +48,14 @@ deleteTask(index, time) {
   this.setState({taskList: taskList});
 }
 
+toggleDeleteMode() {
+  let deleteMode = this.state.deleteMode;
+  console.log(deleteMode)
+  this.setState({deleteMode: !deleteMode, function() {
+    console.log(this.state.deleteMode);
+  }});
+}
+
 
   render() {
     return (
@@ -59,6 +67,8 @@ deleteTask(index, time) {
               tasks = {this.state.taskList.daily}
               handleAddClickFunc = {this.handleAddClick}
               deleteFunc = {this.deleteTask}
+              deleteModeFunc = {this.toggleDeleteMode}
+              deleteMode = {this.state.deleteMode}
             />
             <DayTasks 
               time = "Week"

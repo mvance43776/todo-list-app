@@ -17,6 +17,7 @@ class DayTasks extends Component {
     this.handleAddClick = this.handleAddClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.deleteTask = this.deleteTask.bind(this);
+    this.deleteMode = this.deleteMode.bind(this);
   }
 
 
@@ -52,10 +53,17 @@ handleChange(event) {
   })
 }
 
+deleteMode() {
+  this.props.deleteModeFunc();
+}
+
 deleteTask(index) {
   if (this.props.time === 'Day'){
     let time = 'daily'
     this.props.deleteFunc(index, time);
+    let taskComplete = this.state.taskComplete;
+    taskComplete.pop();
+    this.setState({taskComplete: taskComplete});
   } 
 
   else if (this.props.time === 'Week'){
@@ -67,7 +75,6 @@ deleteTask(index) {
     let time = 'monthly'
     this.props.deleteFunc(index, time);    
   }
-
 }
 
   render() {
@@ -90,10 +97,13 @@ deleteTask(index) {
             active = {this.state.taskComplete[i]}
             toggleTaskFunc = {this.toggleTask}
             deleteFunc = {this.deleteTask}
+            deleteMode = {this.props.deleteMode}
           />
           )
         })}
         <input className="add-button" id = "add-day" type="button" value="add" onClick = {this.handleAddClick}></input>
+        <input className="remove-button" id = "delete-day" type="button" value="delete" onClick = {this.deleteMode}></input>
+
       </div>
     );
   }

@@ -5,6 +5,9 @@ class Task extends Component {
   constructor(props) {
   	super(props);
 
+    this.state = {
+      delete: false,
+    }
 
     this.taskClicked = this.taskClicked.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
@@ -12,10 +15,6 @@ class Task extends Component {
 
 
 componentDidMount() {
-}
-
-removal() {
-console.log('removal')
 }
 
 taskClicked() {
@@ -28,7 +27,22 @@ handleDelete() {
   this.props.deleteFunc(this.props.index);
 }
 
+deleteState() {
+  if (this.props.deleteMode === false) {
+     console.log('Mode: ' + true)
+     return ( <div className = 'delete-button' onClick = {this.handleDelete}>
+      X
+      </div>
+      )
+    }
+}
+
   render() {
+    const deleteState = this.props.deleteMode ? (
+      <div className = 'delete-button' onClick = {this.handleDelete}>
+      X
+      </div>
+    ) : (<div></div>)
     return (
       <div>
       <p
@@ -40,9 +54,7 @@ handleDelete() {
       >
         {this.props.task}
       </p>
-      <div className = 'delete-button' onClick = {this.handleDelete}>
-      X
-      </div>
+      {deleteState}
       </div>
     );
   }
