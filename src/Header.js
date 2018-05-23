@@ -11,9 +11,11 @@ class Header extends Component {
   		month: "",
   		weekDay: "",
   		dateText: "",
+      active: ["active", ""],
   	}
 
   	this.componentDidMount = this.componentDidMount.bind(this);
+    this.changePageClick = this.changePageClick.bind(this);
   }
 
 
@@ -107,6 +109,18 @@ getWeekday(DATE) {
   }
 }
 
+changePageClick(item) {
+  if (item.target.className.indexOf('active') !== -1){
+  } else {
+    if (item.target.id === "edit"){
+      this.setState({active: ["", "active"]});
+    } else {
+      this.setState({active: ["active", ""]});
+    }
+    this.props.changePageFunc();
+  }
+}
+
   render() {
     return (
     <div className = 'header'>
@@ -122,8 +136,8 @@ getWeekday(DATE) {
 	    </div>
 	    <div className="nav">
 	      <ul>
-	        <li className="menu0 active">Tasks</li>
-	        <li className="menu1">Entry</li>
+	        <li className={this.state.active[0]} id = "tasks" onClick = {this.changePageClick}>Tasks</li>
+	        <li className={this.state.active[1]} id = "edit" onClick = {this.changePageClick}>Edit</li>
 	      </ul>
 	    </div>
 	 </div>
@@ -132,3 +146,5 @@ getWeekday(DATE) {
 }
 
 export default Header;
+
+

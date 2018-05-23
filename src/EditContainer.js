@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Header.css';
 import DayTasks from './DayTasks.js';
 
-class TasksContainer extends Component {
+class EditContainer extends Component {
   constructor(props) {
   	super(props);
     this.state = {
@@ -65,17 +65,23 @@ toggleDeleteMode() {
             <DayTasks 
               time = "Day"
               tasks = {this.state.taskList.daily}
-              edit = "false"
+              handleAddClickFunc = {this.handleAddClick}
+              deleteFunc = {this.deleteTask}
+              deleteModeFunc = {this.toggleDeleteMode}
+              deleteMode = {this.state.deleteMode}
+              edit = "true"
             />
             <DayTasks 
               time = "Week"
               tasks = {this.state.taskList.weekly}
-              edit = "false"
+              deleteFunc = {this.deleteTask}
+              edit = "true"
             />
             <DayTasks 
               time = "Month"
               tasks = {this.state.taskList.monthly}
-              edit = "false"
+              deleteFunc = {this.deleteTask}
+              edit = "true"
             />
           </div>
         </div>
@@ -88,4 +94,4 @@ toggleDeleteMode() {
   }
 }
 
-export default TasksContainer;
+export default EditContainer;

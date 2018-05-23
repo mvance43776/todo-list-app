@@ -78,6 +78,12 @@ deleteTask(index) {
 }
 
   render() {
+    const edit = this.props.edit === "true" ? (
+        <div>
+        <input className="add-button" id = "add-day" type="button" value="add" onClick = {this.handleAddClick}></input>
+        <input className="remove-button" id = "delete-day" type="button" value="delete" onClick = {this.deleteMode}></input>
+        </div>
+      ) : (<div></div>)
     return (
       <div className="content-time" id={this.props.time}>
         <div className="content-header">
@@ -101,9 +107,7 @@ deleteTask(index) {
           />
           )
         })}
-        <input className="add-button" id = "add-day" type="button" value="add" onClick = {this.handleAddClick}></input>
-        <input className="remove-button" id = "delete-day" type="button" value="delete" onClick = {this.deleteMode}></input>
-
+        {edit}
       </div>
     );
   }
