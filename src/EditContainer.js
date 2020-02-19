@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Header.css';
-import DayTasks from './DayTasks.js';
+import TimingTasks from './TimingTasks.js';
 
 class EditContainer extends Component {
   constructor(props) {
@@ -62,7 +62,7 @@ toggleDeleteMode() {
       <div id="slides">
         <div className="slide slide0">
           <div className="content">
-            <DayTasks 
+            <TimingTasks 
               time = "Day"
               tasks = {this.state.taskList.daily}
               handleAddClickFunc = {this.handleAddClick}
@@ -71,16 +71,20 @@ toggleDeleteMode() {
               deleteMode = {this.state.deleteMode}
               edit = "true"
             />
-            <DayTasks 
+            <TimingTasks 
               time = "Week"
               tasks = {this.state.taskList.weekly}
               deleteFunc = {this.deleteTask}
+              deleteModeFunc = {this.toggleDeleteMode}
+              deleteMode = {this.state.deleteMode}
               edit = "true"
             />
-            <DayTasks 
+            <TimingTasks 
               time = "Month"
               tasks = {this.state.taskList.monthly}
               deleteFunc = {this.deleteTask}
+              deleteModeFunc = {this.toggleDeleteMode}
+              deleteMode = {this.state.deleteMode}
               edit = "true"
             />
           </div>

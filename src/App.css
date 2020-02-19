@@ -22,7 +22,57 @@
   font-size: large;
 }
 
+.edit-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+}
+
+.add-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(153, 136, 209);
+  box-shadow: 1px 2px 1px 2px rgba(255, 255, 255, 0.25);
+  border: 2px solid white;
+  border-radius: 50%;
+  color: white;
+  padding: 20px;
+  margin: 20px;
+  font-size: 40px;
+  line-height: 20px;
+  cursor: pointer;
+  order: 10;
+  width: 60px;
+  height: 60px;
+}
+
+.add-button:hover {
+  background-color: white;
+  color: rgb(153, 136, 209);
+}
+
+.delete-button {
+  position: relative;
+  top: -80px;
+  left: 380px;
+  background-color: rgba(200, 0, 0, 0.25);
+  width: 20px;
+  cursor: pointer;
+  z-index: 25;
+  color: rgb(200, 200, 200);
+}
+
+.delete-button:hover {
+  background-color: red;
+}
+
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

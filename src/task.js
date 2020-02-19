@@ -29,7 +29,6 @@ handleDelete() {
 
 deleteState() {
   if (this.props.deleteMode === false) {
-     console.log('Mode: ' + true)
      return ( <div className = 'delete-button' onClick = {this.handleDelete}>
       X
       </div>
