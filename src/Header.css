@@ -216,6 +216,7 @@
 }
 
 .content-time p {
+  position: relative;
   background-color: rgba(100, 100, 100, 0.5);
   text-align: center;
   font-size: 24px;
@@ -229,6 +230,41 @@
   justify-content: center;
   position: relative;
   z-index: 0;
+}
+
+.content-time p input {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-family: "Quicksand", sans-serif;
+  color: rgb(200, 200, 200);
+}
+
+.task {
+  position: relative;
+}
+
+.trash {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: -15px;
+  right: -15px;
+  border: 1px solid rgb(200, 200, 200);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  background: #ECC4C6;
+  box-shadow: 0 1px 2px 2px rgba(0, 0, 0, 0.15);
+}
+
+.trash:hover {
+  background: rgb(248, 248, 252);
+}
+
+.trash svg {
+  fill: #B45B5D;
 }
 
 .recentText {

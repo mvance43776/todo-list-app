@@ -27,7 +27,6 @@ class EditContainer extends Component {
     }
     this.handleAddClick = this.handleAddClick.bind(this);
     this.deleteTask = this.deleteTask.bind(this);
-    this.toggleDeleteMode = this.toggleDeleteMode.bind(this);
   }
 
 
@@ -36,7 +35,6 @@ componentDidMount() {
 }
 
 handleAddClick() {
-  console.log('reached')
   let taskList = this.state.taskList;
   taskList.daily.push("")
   this.setState({taskList: taskList});
@@ -46,14 +44,6 @@ deleteTask(index, time) {
   let taskList = this.state.taskList;
   taskList[time].splice(index, 1);
   this.setState({taskList: taskList});
-}
-
-toggleDeleteMode() {
-  let deleteMode = this.state.deleteMode;
-  console.log(deleteMode)
-  this.setState({deleteMode: !deleteMode, function() {
-    console.log(this.state.deleteMode);
-  }});
 }
 
 
@@ -67,7 +57,6 @@ toggleDeleteMode() {
               tasks = {this.state.taskList.daily}
               handleAddClickFunc = {this.handleAddClick}
               deleteFunc = {this.deleteTask}
-              deleteModeFunc = {this.toggleDeleteMode}
               deleteMode = {this.state.deleteMode}
               edit = "true"
             />
@@ -75,7 +64,6 @@ toggleDeleteMode() {
               time = "Week"
               tasks = {this.state.taskList.weekly}
               deleteFunc = {this.deleteTask}
-              deleteModeFunc = {this.toggleDeleteMode}
               deleteMode = {this.state.deleteMode}
               edit = "true"
             />
@@ -83,7 +71,6 @@ toggleDeleteMode() {
               time = "Month"
               tasks = {this.state.taskList.monthly}
               deleteFunc = {this.deleteTask}
-              deleteModeFunc = {this.toggleDeleteMode}
               deleteMode = {this.state.deleteMode}
               edit = "true"
             />

@@ -10,7 +10,7 @@ class TasksContainer extends Component {
     };
     this.handleAddClick = this.handleAddClick.bind(this);
     this.deleteTask = this.deleteTask.bind(this);
-    this.toggleDeleteMode = this.toggleDeleteMode.bind(this);
+    this.saveTask = this.saveTask.bind(this);
   }
   componentDidMount() {
     let dailyTasks = this.props.taskList.filter(
@@ -29,31 +29,90 @@ class TasksContainer extends Component {
       tasksLoaded: true
     });
   }
-  handleAddClick() {
-    console.log("reached");
-    let taskList = this.state.taskList;
-    taskList.daily.push("");
-    this.setState({ taskList: taskList });
+  handleAddClick(time) {
+    switch (time) {
+      case "Day":
+        let dailyTasks = [...this.state.dailyTasks];
+        dailyTasks.push({
+          task: "",
+          complete: 0,
+          timing: "daily"
+        });
+        this.setState({ dailyTasks });
+        break;
+      case "Week":
+        let weeklyTasks = [...this.state.weeklyTasks];
+        weeklyTasks.push({
+          task: "",
+          complete: 0,
+          timing: "weekly"
+        });
+        this.setState({ weeklyTasks });
+        break;
+      case "Month":
+        let monthlyTasks = [...this.state.monthlyTasks];
+        monthlyTasks.push({
+          task: "",
+          complete: 0,
+          timing: "monthly"
+        });
+        this.setState({ monthlyTasks });
+        break;
+      default:
+        break;
+    }
   }
 
   deleteTask(index, time) {
-    let taskList = this.state.taskList;
-    taskList[time].splice(index, 1);
-    this.setState({ taskList: taskList });
+    console.log(index);
+    switch (time) {
+      case "Day":
+        let dailyTasks = [...this.state.dailyTasks];
+        dailyTasks.splice(index, 1);
+        console.log(dailyTasks); 
+        this.setState({ dailyTasks });
+        break;
+      case "Week":
+        let weeklyTasks = [...this.state.weeklyTasks];
+        weeklyTasks.splice(index, 1);
+        this.setState({ weeklyTasks });
+        break;
+      case "Month":
+        let monthlyTasks = [...this.state.monthlyTasks];
+        monthlyTasks.splice(index, 1);
+        this.setState({ monthlyTasks });
+        break;
+      default:
+        break;
+    }
   }
 
-  toggleDeleteMode() {
-    let deleteMode = this.state.deleteMode;
-    console.log(deleteMode);
-    this.setState({
-      deleteMode: !deleteMode,
-      function() {
-        console.log(this.state.deleteMode);
-      }
-    });
+  saveTask(task, index, time) {
+    console.log(task, index, time)
+    console.log(this.state.dailyTasks)
+    switch (time) {
+      case "Day":
+        let dailyTasks = [...this.state.dailyTasks];
+        dailyTasks[index].task = task;
+        this.setState({ dailyTasks });
+        break;
+      case "Week":
+        let weeklyTasks = [...this.state.weeklyTasks];
+        weeklyTasks[index].task = task;
+        this.setState({ weeklyTasks });
+        break;
+      case "Month":
+        let monthlyTasks = [...this.state.monthlyTasks];
+        monthlyTasks[index].task = task;
+        this.setState({ monthlyTasks });
+        break;
+      default:
+        break;
+    }
   }
+
   render() {
-    console.log(this.props.taskList);
+    console.log(this.state.dailyTasks);
     if (!this.state.tasksLoaded) return "Loading tasks...";
     return (
       <div id="slides">
@@ -65,8 +124,8 @@ class TasksContainer extends Component {
               edit={this.props.page}
               handleAddClickFunc={this.handleAddClick}
               deleteFunc={this.deleteTask}
-              deleteModeFunc={this.toggleDeleteMode}
               deleteMode={this.state.deleteMode}
+              saveTask={this.saveTask}
             />
             <TimingTasks
               time="Week"
@@ -74,8 +133,8 @@ class TasksContainer extends Component {
               edit={this.props.page}
               handleAddClickFunc={this.handleAddClick}
               deleteFunc={this.deleteTask}
-              deleteModeFunc={this.toggleDeleteMode}
               deleteMode={this.state.deleteMode}
+              saveTask={this.saveTask}
             />
             <TimingTasks
               time="Month"
@@ -83,8 +142,8 @@ class TasksContainer extends Component {
               edit={this.props.page}
               handleAddClickFunc={this.handleAddClick}
               deleteFunc={this.deleteTask}
-              deleteModeFunc={this.toggleDeleteMode}
               deleteMode={this.state.deleteMode}
+              saveTask={this.saveTask}
             />
           </div>
         </div>
