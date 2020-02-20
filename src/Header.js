@@ -21,7 +21,6 @@ class Header extends Component {
   componentDidMount() {
     const DATE = new Date();
     let day = this.getDayNumber(DATE);
-    console.log(day);
     let dayLong = this.getDayLong(day);
     let month = this.getMonthNumber(DATE);
     let weekDay = this.getWeekday(DATE);

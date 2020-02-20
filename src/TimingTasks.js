@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Header.css";
-import Task from "./Task.js";
+import Task from "./task.js";
 
 class TimingTasks extends Component {
   constructor(props) {
@@ -16,7 +16,7 @@ class TimingTasks extends Component {
     this.handleAddClick = this.handleAddClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.deleteTask = this.deleteTask.bind(this);
-    this.deleteMode = this.deleteMode.bind(this);
+    this.saveTask = this.saveTask.bind(this);
   }
 
   componentDidMount() {
@@ -37,49 +37,50 @@ class TimingTasks extends Component {
     let taskSum = taskComplete.reduce(function(num, sum) {
       return num + sum;
     });
-    console.log("Task Sum: " + taskSum);
     this.setState({ taskComplete: taskComplete, taskSum: taskSum });
   }
 
   handleAddClick() {
-    console.log("add clicked");
+    this.props.handleAddClickFunc(this.props.time);
+    let taskComplete = [...this.state.taskComplete];
+    taskComplete.push(0);
+    this.setState({ taskComplete });
   }
 
   handleChange(event) {
     this.setState({ newTask: event.target.value }, function() {
-      console.log(this.state.newTask);
     });
   }
 
-  deleteMode() {
-    this.props.deleteModeFunc();
+  deleteTask(index) {
+    this.props.deleteFunc(index, this.props.time);
+    let taskComplete = [...this.state.taskComplete];
+    if (taskComplete[index] === 1) {
+      taskComplete.splice(index, 1);
+      let taskSum = this.state.taskSum;
+      taskSum--;
+      this.setState({ taskComplete, taskSum });
+    } else {
+      taskComplete.splice(index, 1);
+      this.setState({ taskComplete });
+    }
   }
 
-  deleteTask(index) {
-    if (this.props.time === "Day") {
-      let time = "daily";
-      this.props.deleteFunc(index, time);
-      let taskComplete = this.state.taskComplete;
-      taskComplete.pop();
-      this.setState({ taskComplete: taskComplete });
-    } else if (this.props.time === "Week") {
-      let time = "weekly";
-      this.props.deleteFunc(index, time);
-    } else {
-      let time = "monthly";
-      this.props.deleteFunc(index, time);
-    }
+  saveTask(task, index) {
+    this.props.saveTask(task, index, this.props.time)
   }
 
   render() {
     const edit = this.props.edit ? (
-      <div className = 'edit-buttons'>
+      <div className="edit-buttons">
         <button
           className="add-button"
           id="add-day"
           type="button"
           onClick={this.handleAddClick}
-        >+</button>
+        >
+          +
+        </button>
       </div>
     ) : (
       <div></div>
@@ -99,12 +100,17 @@ class TimingTasks extends Component {
         {this.props.tasks.map((task, i) => {
           return (
             <Task
+              key={task.timing + i}
               index={i}
               task={task.task}
               active={this.state.taskComplete[i]}
               toggleTaskFunc={this.toggleTask}
               deleteFunc={this.deleteTask}
               deleteMode={false}
+              deleteCompleted={this.deleteCompletedTask}
+              edit={this.props.edit}
+              time={this.props.time}
+              saveTask={this.saveTask}
             />
           );
         })}

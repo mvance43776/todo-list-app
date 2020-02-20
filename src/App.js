@@ -28,9 +28,7 @@ class App extends Component {
 
   changePage() {
     let newPage = !this.state.page;
-    this.setState({ page: newPage }, function() {
-      console.log(this.state.page);
-    });
+    this.setState({ page: newPage });
   }
 
   handleAlterComplete(index) {
@@ -38,7 +36,7 @@ class App extends Component {
     newTaskList[index].complete = !newTaskList[index].complete;
     this.setState({
       taskList: newTaskList
-    })
+    });
   }
 
   render() {
@@ -47,7 +45,11 @@ class App extends Component {
     return (
       <div>
         <Header changePageFunc={this.changePage} />
-        <TasksContainer taskList={taskList} handleAlterComplete={this.handleAlterComplete} page={page}/>
+        <TasksContainer
+          taskList={taskList}
+          handleAlterComplete={this.handleAlterComplete}
+          page={page}
+        />
       </div>
     );
   }

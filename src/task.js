@@ -1,59 +1,72 @@
-import React, { Component } from 'react';
-import './Header.css';
+import React, { Component } from "react";
+import "./Header.css";
+import TrashIcon from "./TrashIcon";
 
 class Task extends Component {
   constructor(props) {
-  	super(props);
+    super(props);
 
     this.state = {
-      delete: false,
-    }
+      taskText: this.props.task
+    };
 
     this.taskClicked = this.taskClicked.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
+    this.deleteState = this.deleteState.bind(this);
+    this.inputChange = this.inputChange.bind(this);
+    this.keyPress = this.keyPress.bind(this);
   }
 
+  componentDidMount() {}
 
-componentDidMount() {
-}
+  taskClicked() {
+    this.props.toggleTaskFunc(this.props.index);
+  }
 
-taskClicked() {
-  console.log(this.props.index)
-  this.props.toggleTaskFunc(this.props.index);
-    console.log('Active: ' + this.props.active)
-}
+  deleteState() {
+    this.props.deleteFunc(this.props.index);
+  }
 
-handleDelete() {
-  this.props.deleteFunc(this.props.index);
-}
+  inputChange(e) {
+    let taskText = e;
+    this.setState({taskText})
+  }
 
-deleteState() {
-  if (this.props.deleteMode === false) {
-     return ( <div className = 'delete-button' onClick = {this.handleDelete}>
-      X
-      </div>
-      )
+  keyPress(event) {
+    if(event.key === 'Enter'){
+      this.props.saveTask(this.state.taskText, this.props.index);
     }
-}
+  }
 
   render() {
-    const deleteState = this.props.deleteMode ? (
-      <div className = 'delete-button' onClick = {this.handleDelete}>
-      X
-      </div>
-    ) : (<div></div>)
     return (
-      <div>
-      <p
-        onDoubleClick = {this.removal} 
-        className = {this.props.active ? 'strikethrough' : ''}
-        id = {'p-day' + (this.props.index + 1)}
-        index = {this.props.index}
-        onDoubleClick = {() => this.taskClicked(this)}
-      >
-        {this.props.task}
-      </p>
-      {deleteState}
+      <div className="task">
+        {this.props.task !== "" ? (
+          <p
+            className={this.props.active ? "strikethrough" : ""}
+            id={"p-day" + (this.props.index + 1)}
+            index={this.props.index}
+            onDoubleClick={() => this.taskClicked(this)}
+          >
+            {this.props.task}
+          </p>
+        ) : (
+          <p>
+            <input
+              className={this.props.active ? "strikethrough" : ""}
+              id={"p-day" + (this.props.index + 1)}
+              index={this.props.index}
+              placeholder="add a task and hit enter"
+              onDoubleClick={() => this.taskClicked(this)}
+              onChange={(e) => this.inputChange(e.target.value)}
+              onKeyPress={this.keyPress}
+            ></input>
+          </p>
+        )}
+        {this.props.edit ? (
+          <span className="trash" onClick={this.deleteState}>
+            <TrashIcon />
+          </span>
+        ) : null}
       </div>
     );
   }
