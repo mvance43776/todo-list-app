@@ -45,6 +45,7 @@
   border: 4px solid;
   height: 80px;
   width: 80px;
+  border-radius: 75px;
   -moz-border-radius: 75px;
   -webkit-border-radius: 75px;
   margin: 0 auto;

@@ -6,7 +6,7 @@ class TasksContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tasksLoaded: false
+      tasksLoaded: false,
     };
     this.handleAddClick = this.handleAddClick.bind(this);
     this.deleteTask = this.deleteTask.bind(this);
@@ -14,19 +14,19 @@ class TasksContainer extends Component {
   }
   componentDidMount() {
     let dailyTasks = this.props.taskList.filter(
-      task => task.timing === "daily"
+      (task) => task.timing === "daily"
     );
     let weeklyTasks = this.props.taskList.filter(
-      task => task.timing === "weekly"
+      (task) => task.timing === "weekly"
     );
     let monthlyTasks = this.props.taskList.filter(
-      task => task.timing === "monthly"
+      (task) => task.timing === "monthly"
     );
     this.setState({
       dailyTasks,
       weeklyTasks,
       monthlyTasks,
-      tasksLoaded: true
+      tasksLoaded: true,
     });
   }
   handleAddClick(time) {
@@ -36,7 +36,7 @@ class TasksContainer extends Component {
         dailyTasks.push({
           task: "",
           complete: 0,
-          timing: "daily"
+          timing: "daily",
         });
         this.setState({ dailyTasks });
         break;
@@ -45,7 +45,7 @@ class TasksContainer extends Component {
         weeklyTasks.push({
           task: "",
           complete: 0,
-          timing: "weekly"
+          timing: "weekly",
         });
         this.setState({ weeklyTasks });
         break;
@@ -54,7 +54,7 @@ class TasksContainer extends Component {
         monthlyTasks.push({
           task: "",
           complete: 0,
-          timing: "monthly"
+          timing: "monthly",
         });
         this.setState({ monthlyTasks });
         break;

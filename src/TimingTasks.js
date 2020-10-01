@@ -20,10 +20,7 @@ class TimingTasks extends Component {
   }
 
   componentDidMount() {
-    let taskComplete = [];
-    for (let i in this.props.tasks) {
-      taskComplete.push(0);
-    }
+    let taskComplete = Array(this.props.tasks.length).fill(0);
     this.setState({ taskComplete: taskComplete });
   }
 
