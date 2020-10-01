@@ -7,7 +7,7 @@ class Task extends Component {
     super(props);
 
     this.state = {
-      taskText: this.props.task
+      taskText: this.props.task,
     };
 
     this.taskClicked = this.taskClicked.bind(this);
@@ -28,11 +28,11 @@ class Task extends Component {
 
   inputChange(e) {
     let taskText = e;
-    this.setState({taskText})
+    this.setState({ taskText });
   }
 
   keyPress(event) {
-    if(event.key === 'Enter'){
+    if (event.key === "Enter") {
       this.props.saveTask(this.state.taskText, this.props.index);
     }
   }
