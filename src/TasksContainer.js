@@ -64,12 +64,10 @@ class TasksContainer extends Component {
   }
 
   deleteTask(index, time) {
-    console.log(index);
     switch (time) {
       case "Day":
         let dailyTasks = [...this.state.dailyTasks];
         dailyTasks.splice(index, 1);
-        console.log(dailyTasks); 
         this.setState({ dailyTasks });
         break;
       case "Week":
@@ -88,8 +86,6 @@ class TasksContainer extends Component {
   }
 
   saveTask(task, index, time) {
-    console.log(task, index, time)
-    console.log(this.state.dailyTasks)
     switch (time) {
       case "Day":
         let dailyTasks = [...this.state.dailyTasks];
@@ -112,7 +108,6 @@ class TasksContainer extends Component {
   }
 
   render() {
-    console.log(this.state.dailyTasks);
     if (!this.state.tasksLoaded) return "Loading tasks...";
     return (
       <div id="slides">
